@@ -72,6 +72,7 @@ int main()
         return -1;
     }
 
+    load_shader("shaders/basic.vert", "shaders/basic.frag");
     while (!glfwWindowShouldClose(window))
     {
         glClear(GL_COLOR_BUFFER_BIT);
@@ -81,9 +82,7 @@ int main()
         glfwPollEvents();
     }
     
-    load_shader("shaders/basic.vert", "shaders/basic.frag");
 
-    glfwDestroyWindow(window);
     glfwTerminate();
     return 0;
 }
