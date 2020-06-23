@@ -8,22 +8,25 @@
 GLuint program;
 
 
-char load_shader_file(char filename[])
+char* load_shader_file(char filename[])
 {
     FILE *file;
-    char output[2048];
+    char output[2048] = {};
 
     file = fopen(filename, "r");
-    fgets(output, 2048, file);
+    
+    while (fgets(output, 2048, file) != NULL)
+    
+
     fclose(file);
 
     return output;
 }
 
-void load_shader(char vs_filename, char fs_filename)
+void load_shader(char vs_filename[], char fs_filename[])
 {
-    char vs_source = load_shader_file((char)vs_filename);
-    char fs_source = load_shader_file((char)fs_filename);
+    char vs_source = load_shader_file(vs_filename);
+    char fs_source = load_shader_file(fs_filename);
 
     GLuint vs = glCreateShader(GL_VERTEX_SHADER);
     GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
@@ -71,8 +74,7 @@ int main()
         printf("GLEW is Not Initalized Properly!");
         return -1;
     }
-
-    load_shader("shaders/basic.vert", "shaders/basic.frag");
+    load_shader("./shaders/basic.vert", "./shaders/basic.frag");
     while (!glfwWindowShouldClose(window))
     {
         glClear(GL_COLOR_BUFFER_BIT);
