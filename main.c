@@ -2,12 +2,12 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-char load_shader_file()
+char load_shader_file(char filename[])
 {
     FILE *file;
     char output[2048];
 
-    file = fopen("shaders/basic.frag", 'r');
+    file = fopen(filename, 'r');
     fgets(output, 2048, file);
     fclose(file);
 
