@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-Wall
-LDFLAGS=-lglfw3 -lGL -ldl -pthread -lGL -lX11 -lm
+LDFLAGS=-lGLEW -lglfw3 -lGL -ldl -pthread -lGL -lX11 -lm
 
 .PHONY: all
 all: main
